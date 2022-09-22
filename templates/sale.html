@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %}  
+         Sale
+{% endblock %}
+
+{% block main %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        document.querySelector("#discount").addEventListener("keyup", function() {
+        let discount = document.querySelector("#discount").value
+        let price = document.querySelector("#price").value  
+        let total_price = price * document.querySelector("#sale_quantity").value
+        let net_price = total_price - ((total_price * discount) / 100)
+        
+        document.querySelector("#sale_rupee").innerHTML = "&#8377" 
+        
+        document.querySelector("#sale_amount").innerHTML = net_price
+        })
+    });
+</script>
+
+<h1 class="tect-center">Sale</h1>
+
+    <form action="/sale" method="post" class="mx-auto w-75 form3">          
+        <div class="row">
+            <div class="col">
+                <label for="particulars">Particulars</label>
+                <input type="text" name="particulars" class="form-control mx-auto w-auto" autocomplete="on" autofocus placeholder="Item name">
+            </div>
+            <div class="col">
+                <label for="rate">Price</label>
+                <input type="text" name="price" id="price" class="form-control mx-auto w-auto" autocomplete="off" autofocus placeholder="rate">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="quantity">Quantity</label>
+                <input type="text" id="sale_quantity" name="quantity" class="form-control mx-auto w-auto" autocomplete="off" autofocus placeholder="quantity">
+            </div>
+            <div class="col">
+                <label for="discount">Discount</label>
+                <input type="text" id="discount" name="discount" class="form-control mx-auto w-auto" autocomplete="off" autofocus placeholder="Discount %">                   
+            </div>
+        </div>   
+        <hr>
+        <div class="row">
+            <div class="col">
+                Total Amount 
+                <br>
+                <span id="sale_rupee"></span>
+                <span id="sale_amount"></span>
+            </div>
+        </div>
+        <hr>
+        <h5> Customer Details </h5>
+
+        <div class="row">
+            <div class="col">
+                <label for="name">Name</label> 
+                <input name="name" type="text" class="form-control mx-auto w-auto" placeholder="Customer's name">
+            </div>
+            <div class="col">
+                <label for="email">Email Id</label>
+                <input name="email" type="text" class="form-control mx-auto w-auto" placeholder="Customer's E-mail">
+            </div>
+        </div>     
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="contact">Contact (Optional)</label>
+                <input type="text" name="contact" class="form-control mx-auto w-auto" placeholder="Customer's Contact">
+            </div>
+        </div>           
+        
+        <button class="btn btn-success" id="sale" type="submit">Sumbit</button>
+   </form>
+
+{% endblock %}
+
+
+
+

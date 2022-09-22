@@ -1,0 +1,95 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+button{
+    margin: 10px;
+    padding: 10px 20px;
+}
+
+body
+{
+    background-color: #BEEEE6;
+}
+
+.col
+{
+    padding: 5px;
+    margin: 5px;
+}
+
+.alert.message
+{
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.heading
+{
+    border:none;
+    background-color: #123456;
+    color:white;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.input1
+{
+    background-color: white;
+}
+
+label{
+    margin: 3px
+}
+
+.form3
+{
+    border: #123456 solid 10px;
+}
+
+.home
+{   
+    box-shadow: 5px 5px black;
+    margin: auto;
+}
+
+.invoice
+{
+    border: #123456 solid 2px;
+    width: 30%;
+    margin: auto;
+    padding: 5px;
+}
+
+.HomeButton
+{
+    border:none;
+    background-color: azure;
+    margin: auto;
+}
+
+.home
+{
+    display: inline-block;
+    margin: 5px;
+}

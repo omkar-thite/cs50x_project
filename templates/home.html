@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+            <h1>Welcome to {{ store[0]["store_name"] }} </h1>
+
+            <form class="home" action="/purchase" >
+                <button class="HomeButton" type="submit">Purchase</button>
+            </form>
+            
+            <form class="home" action="/sale">
+                <button class="HomeButton" type="submit">Sale</button>
+            </form>
+
+            <form class="home" action="/transactions">
+                <button class="HomeButton" type="submit">Transactions</button>
+            </form>
+            
+            <form class="home" action="/inventory">
+                <button class="HomeButton" type="submit">Inventory</button>
+            </form>
+   
+{% endblock %}

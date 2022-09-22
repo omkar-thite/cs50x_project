@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}  
+         Purchases
+{% endblock %}
+
+{% block main %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        
+        document.querySelector("#quantity").addEventListener("keyup", function() {
+                let amount = document.querySelector("#rate").value * document.querySelector("#quantity").value
+                
+                document.querySelector("#rupee").innerHTML = "&#8377" 
+                
+                document.querySelector("#amount").innerHTML = amount
+    
+        })
+    });
+</script>
+
+<h1>Purchase</h1>
+
+   <form action="/purchase" method="post" class="mx-auto w-75 form3">          
+        <div class="row">
+            <div class="col">
+                <label for="particulars">Particulars</label>
+                <input type="text" name="particulars" class="form-control mx-auto w-auto" autocomplete="off" autofocus placeholder="Item name">
+            </div>
+            <div class="col">
+                <label for="rate">Rate</label>
+                <input type="text" name="purchase_rate" id="rate" class="form-control mx-auto w-auto" autocomplete="off" autofocus placeholder="rate">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="quantity">Quantity</label>
+                <input type="text" id="quantity" name="quantity" class="form-control mx-auto w-auto" autocomplete="off" autofocus placeholder="quantity">
+            </div>
+            <div class="col">
+                Total Amount 
+                <br>
+                <span id="rupee"></span>
+                <span id="amount"></span>
+            </div>
+        </div>
+
+        <hr>
+
+        <h6> Vendor Details</h6>
+        <div class="row">
+            <div class="col">
+                <label for="name">Vendor Name</label> 
+                <input name="name" type="text" class="form-control mx-auto w-auto" placeholder="Vendor name">
+            </div>
+            <div class="col">
+                <label for="email">Vendor Email Id</Address></label>
+                <input name="email" type="text" class="form-control mx-auto w-auto" placeholder="E-mail">
+            </div>
+        </div>     
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="contact">Vendor Contact (Optionally)</Address></label>
+                <input type="text" name="contact" class="form-control mx-auto w-auto" placeholder="Contact">
+            </div>
+        </div>           
+        
+<button class="btn btn-success" id="purchase" type="submit">Add items</button>
+    
+</form>
+
+
+{% endblock %}
+
+
+
+

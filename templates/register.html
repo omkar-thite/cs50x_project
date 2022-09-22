@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block main %}
+
+
+<form action="/register" method="post">
+        <div class="container-fluid mx-auto w-50">
+            <h1>Register</h1>
+           <form>          
+                <div class="row">
+                    <div class="col">
+                        <label for="particulars">Full Name</label>
+                        <input type="text" name="name" class="form-control mx-auto w-auto" autocomplete="on" autofocus placeholder="name">
+                    </div>
+                    <div class="col">
+                        <label for="rate">Username</label>
+                        <input type="text" name="username" id="username" class="form-control mx-auto w-auto" autocomplete="off" autofocus placeholder="Username">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="quantity">E-mail</label>
+                        <input type="text" id="email" name="email" class="form-control mx-auto w-auto" autocomplete="off" autofocus placeholder="E-mail">
+                    </div>
+                    <div class="col">
+                        <label for="contact">Mobile Number</label>
+                        <input type="text" id="contact" name="contact" class="form-control mx-auto w-auto" autocomplete="off" autofocus placeholder="Mobile Number">                   
+                    </div>
+                </div>   
+                <div class="row">
+                    <div class="col">
+                        <label for="store_name">Store Name</label> 
+                        <input name="store_name" type="text" class="form-control mx-auto w-auto" placeholder="Store Name">
+                    </div>
+                    <div class="col">
+                        <label for="store_address">Store Address</Address></label>
+                        <input name="store_address" type="text" class="form-control mx-auto w-auto" placeholder="Store Address">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="password">Password</Address></label>
+                        <input name="password" type="password" class="form-control mx-auto w-auto" placeholder="Enter Password">
+                    </div>
+                    <div class="col">
+                        <label for="confirmation">Confirm Password</label>
+                        <input name="confirmation" type="password" class="form-control mx-auto w-auto" placeholder="Confirm Password">
+                    </div>
+                </div>
+                <button id="submit" class="btn  btn-primary" type="submit">Create Account</button>
+           </form>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
+
+
+
+

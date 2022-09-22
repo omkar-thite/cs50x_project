@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block title %}
+    Sale Invoice
+{% endblock %}
+
+{% block main %}
+    <div class="invoice">
+        <div>
+            <h6><u>Invoice</u></h6>
+
+            <h3> {{ store[0]["store_name"] }} </h3>
+            <hr>
+            <h5> {{ store[0]["store_address"] }} </h5> 
+            <hr>
+        </div>
+        
+        <table class="table w-50 mx-auto">
+            <thead>
+                    <tr>
+                        <th>
+                            Particulars
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Rate
+                        </th>
+                        <th>
+                            Discount
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                    </tr>
+            </thead>
+            <tbody>
+                <tr>
+                        <td>
+                            {{ sales["particulars"] }}
+                        </td>
+                        <td>
+                            {{ sales["quantity"] }}
+                        </td>
+                        <td>
+                            {{ sales["rate"] }}
+                        </td>
+                        <td>
+                            {{ sales["discount"] }}
+                        </td>
+                        <td>
+                            {{ sales["amount"] }}
+                        </td>
+                        
+                </tr>
+            </tbody>
+        </table>
+    <p>Thanks for Shopping with us. Visit again.</p>
+{% endblock %}

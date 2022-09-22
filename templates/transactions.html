@@ -1,0 +1,274 @@
+{% extends "layout.html" %}
+
+{% block title %}  
+        {{ particulars }}
+{% endblock %}
+
+{% block main %}
+
+<!--POST--> 
+{% if particulars %}
+    <h1 class="heading w-25 pb-2 mb-3">{{ particulars }}</h1>
+
+    <h2>Purchases</h2>
+
+    <table class="table table-dark w-75 p-3 mx-auto">
+        <thead>
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Vendor
+                </th>
+                <th>
+                    quantity
+                </th>
+                <th>
+                    rate
+                </th>
+                <th>
+                    amount
+                </th>
+            </tr>
+        </thead>
+        <tbody> 
+            {% for transaction in transactions %}
+                {% if transaction["purchase_quantity"] %}
+                    <tr>
+                        <td>
+                            {% for date in dates %}
+                                {% if date["id"] == transaction["id"] %}                       
+                                    {{ date["DATE(time)"] }}
+                                {% endif %}
+                            {% endfor %}                      
+                        </td>
+                        <td>
+                            {% for person in people %}
+                                {% if person["id"] == transaction["person_id"] %}
+                                    {{ person["name"] }}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{ transaction["purchase_quantity"] }}
+                        </td>
+                        <td>
+                            {{ transaction["purchase_rate"] | rupee }}
+                        </td>
+                        <td>
+                            {{ transaction["amount"] | rupee}}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Sales</h2>
+
+    <table class="table table-dark w-75 p-3 mx-auto">
+        <thead>
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Customer
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Discount
+                </th>
+                <th>
+                    Amount
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody> 
+            {% for transaction in transactions %}
+                {% if transaction["sale_quantity"] %}
+                    <tr>
+                        <td>                        
+                            {% for date in dates %}
+                                {% if date["id"] == transaction["id"] %}                       
+                                    {{ date["DATE(time)"] }}
+                                {% endif %}
+                            {% endfor %}                       
+                        </td>
+                        <td>
+                            {% for person in people %}
+                                {% if person["id"] == transaction["person_id"] %}
+                                    {{ person["name"] }}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{ transaction["sale_quantity"] }}
+                        </td>
+                        <td>
+                            {{ transaction["sale_price"] | rupee }}
+                        </td>
+                        <td>
+                            {{ transaction["discount"] }} %
+                        </td>
+                        <td>
+                            {{ transaction["amount"] | rupee}}
+                        </td> 
+                        <td>
+                            <form action="/invoice" method="post">
+                                <input type="hidden" name="particulars" value="{{ transaction["particulars"] }}">
+                                <input type="hidden" name="quantity" value="{{ transaction["sale_quantity"] }}">
+                                <input type="hidden" name="rate" value="{{ transaction["sale_price"] }}">
+                                <input type="hidden" name="discount" value="{{ transaction["discount"] }}">
+                                <input type="hidden" name="amount" value="{{ transaction["amount"] }}">
+                                <input class="input1" type="submit" value="Invoice">
+                            </form>
+                        </td>                              
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% else %}
+<!--GET-->
+<h1 style="color : blue;"> All Transactions </h1>
+
+<h2>Purchases</h2>
+    <table class="table table-dark w-75 p-3 mx-auto">
+        <thead>
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Vendor
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Rate
+                </th>
+                <th>
+                    Amount
+                </th>
+            </tr>
+        </thead>
+        <tbody> 
+            {% for transaction in transactions %}
+                {% if transaction["purchase_quantity"] %}
+                    <tr>
+                        <td>                        
+                            {% for date in dates %}
+                                {% if date["id"] == transaction["id"] %}                       
+                                    {{ date["DATE(time)"] }}
+                                {% endif %}
+                            {% endfor %}                        
+                        </td>
+                        <td>
+                            {% for person in people %}
+                                {% if person["id"] == transaction["person_id"] %}
+                                    {{ person["name"] }}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{ transaction["purchase_quantity"] }}
+                        </td>
+                        <td>
+                            {{ transaction["purchase_rate"] }}
+                        </td>
+                        <td>
+                            {{ transaction["amount"] }}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Sales</h2>
+
+    <table class="table table-dark w-75 p-3 mx-auto">
+        <thead>
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Customer
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Discount
+                </th>
+                <th>
+                    Amount
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody> 
+            {% for transaction in transactions %}
+                {% if transaction["sale_quantity"] %}
+                    <tr>
+                        <td>                        
+                            {% for date in dates %}
+                                {% if date["id"] == transaction["id"] %}                       
+                                    {{ date["DATE(time)"] }}
+                                {% endif %}
+                            {% endfor %}               
+                        </td>
+                        <td>
+                            {% for person in people %}
+                                {% if person["id"] == transaction["person_id"] %}
+                                    {{ person["name"] }}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{ transaction["sale_quantity"] }}
+                        </td>
+                        <td>
+                            {{ transaction["sale_price"] }}
+                        </td>
+                        <td>
+                            {{ transaction["discount"] }}
+                        </td>
+                        <td>
+                            {{ transaction["amount"] }}
+                        </td>                        
+                        <td>
+                            <form action="/invoice" method="post">
+                                <input type="hidden" name="particulars" value="{{ transaction["particulars"] }}">
+                                <input type="hidden" name="quantity" value="{{ transaction["sale_quantity"] }}">
+                                <input type="hidden" name="rate" value="{{ transaction["sale_price"] }}">
+                                <input type="hidden" name="discount" value="{{ transaction["discount"] }}">
+                                <input type="hidden" name="amount" value="{{ transaction["amount"] }}">
+                                <input class="input1" type="submit" value="Invoice">
+                            </form>
+                        </td>                        
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endif %}
+
+{% endblock %}

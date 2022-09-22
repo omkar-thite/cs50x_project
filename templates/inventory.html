@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}  
+        Inventory
+{% endblock %}
+
+{% block main %}
+
+<h1 class="heading w-25 pb-2 mb-3">Inventory</h1>
+
+<table class="table table-dark w-75 p-3 mx-auto">
+    <thead>
+        <tr>
+            <th>
+                Particulars
+            </th>
+            <th>
+                Quantity available
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody> 
+        {% for inventory in inventories %}
+            <tr>
+                <td>
+                    <form>
+                       {{ inventory["particulars"] }}
+                        <input type="hidden" name="particulars" value="{{ inventory["particulars"] }}">
+                    </form>
+                </td>
+                <td>
+                    {{ inventory["quantity"] }}
+                </td>
+                <td>
+                    <form action="/transactions" method="post">
+                        <input type="hidden" name="particulars" value="{{ inventory["particulars"] }}">
+                        <input class="input1" type="submit" value="Details">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+
+
+
