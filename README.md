@@ -1,5 +1,4 @@
 # THE STORE MANAGER
-### Video Demo : https://youtu.be/0lZmnkd5JaE
 
 #### DESCRIPTION : 
 
